@@ -390,30 +390,9 @@
 
   </style>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-  <script>
-    var text_1 = 'WARNING!!! ERROR! ERROR! Hello my beautiful princess...';
-    var text_2 = 'I LOVE YOU VERY MUCH, Domi ! ! !';
-    repeat(text_1, 1);
-    setTimeout(function () {
-      repeat(text_2, 2);
-    }, text_1.length * 100 + 1000);
-
-    function repeat(text, n) {
-      var i = 0,
-        repeatable = setInterval(function () {
-          $('#text_' + n).text($('#text_' + n).text() + text[i]);
-          i++;
-          if (i >= text.length) {
-            clearInterval(repeatable);
-          }
-        }, 100);
-    }
-  </script>
-
-
 </head>
 
-<body>
+<body onload=typeWriter()>
   <div class='terminal'>
     <h1 id='title'>404</h1>
     <div class='text' id='text_1'></div>
@@ -440,6 +419,21 @@
     </div>
   </div>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script>
+    var i = 0;
+    var txt = 'WARNING!!! ERROR! ERROR! Hello my beautiful princess... I LOVE YOU VERY MUCH, Domi ! ! !';
+    var txt2 = 'I LOVE YOU VERY MUCH, Domi ! ! !';
+    var speed = 100;
+
+    function typeWriter() {
+      if (i < txt.length) {
+        document.getElementById("text_1").innerHTML += txt.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+    
+  </script>
 </body>
 
 </html>
